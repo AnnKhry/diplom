@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Routes</title>
+</head>
+<body>
+<h2>Routes:</h2>
+<!--<div class="container mb-4">-->
+<!--    <div class="row">-->
+<!--        <div class="col-12">-->
+<!--            <div class="table-responsive">-->
+
+<!--                <table class="table table-striped">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th scope="col">From</th>-->
+<!--                        <th scope="col">To</th>-->
+<!--                        <th scope="col">Departure Time</th>-->
+<!--                        <th scope="col">Arrival ime</th>-->
+<!--                        <th scope="col">Price</th>-->
+<!--                        <th scope="col">Free seats</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                    <tr>-->
+<!--                        <td th:text="${route.fromA}"></td>-->
+<!--                        <td th:text="${route.toA}"></td>-->
+<!--                        <td th:text="${route.dept_date"></td>-->
+<!--                        <td th:text="${route.dept_time"></td>-->
+<!--                        <td th:text="${route.arr_time}"></td>-->
+<!--                        <td th:text="${route.getTotal_seats()}"></td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <form method="POST" th:action="@{'/reservation'}" th:value="${reservation.getId()}" th:name="idReservation">-->
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Город отправления</th>
+        <th>Город назначения</th>
+        <th>Дата отправления</th>
+        <th>Время отправления</th>
+        <th>Время прибытия</th>
+        <th>Стоимость билета (руб.)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="route:${routes}"  >
+        <td th:text="${route.fromA}"</td>
+        <td th:text="${route.toA}"</td>
+        <td th:text="${route.dept_date}"</td>
+        <td th:text="${route.dept_time}"</td>
+        <td th:text="${route.arr_time}"</td>
+        <td th:text="${route.seat_price}"</td>
+<!--            <td><a href="@{/showCompleteReservation?id={id}(id=${route.id})}">Выбрать</a></td>-->
+<!--        <td><a th:href="@{/showCompleteReservation?routeId={routeId}(routeId=${route.routeId})}">Выбрать</a></td>-->
+<!--        <td><a th:href="@{/showCompleteReservation/{id}(id=${route.id})}">Выбрать</a></td>-->
+        <td><a th:href="@{/showCompleteReservation?id={id}(id=${route.id})}">Выбрать</a></td>
+
+    </tr>
+    </c:forEach>
+
+    </tbody>
+
+<!--    <div class="form-group label-floating">-->
+<!--        <label>Username</label>-->
+<!--        <input type="text" name="username"-->
+<!--               th:value="${currentStudent.username}"/>-->
+<!--    </div>-->
+
+
+</body>
+
+</html>

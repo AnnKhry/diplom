@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Find Routes
+    </title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:insert="blocks/header :: header"></div>
+<img src="/resources/static/img/Minibuslogo.png" />
+
+<h2>Find Routes:</h2>
+<form action="findRoutes" method="GET">
+    From: <input type="text" name="fromA">
+    To: <input type="text" name="toA">
+    Departure Date: <input type="date" pattern ="yyyy-MM-dd" name="dept_date" required>
+    <input type="submit" value="search">
+</form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+package com.example11.demo.service;
+
+
+import com.example11.demo.model.enumerations.RouteInfo;
+import com.example11.demo.model.enumerations.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface RouteService {
+
+  List<RouteInfo> listAll();
+
+
+
+  Optional<RouteInfo> findById(Long id);
+
+    }

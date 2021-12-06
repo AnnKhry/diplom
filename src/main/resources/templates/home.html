@@ -1,0 +1,155 @@
+
+<!-- start banner Area -->
+<section class="banner-area relative" xmlns:th="http://www.thymeleaf.org">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+<!--        <div class="row fullscreen align-items-center justify-content-between">-->
+            <div class="col-lg-12 col-md-6 banner-left">
+                <h6 class="text-white">Пассажирские перевозки на всей территории Республики Беларусь</h6>
+                <h1 class="text-white">MiniBus</h1>
+
+
+
+                <div>
+                    <ul class="nav-menu">
+<!--                        <li><a href="/home">Главная страница</a></li>-->
+                        <li><a href="/blog">Расписание</a></li>
+
+                        <li><a href="/routes">Популярные направления</a></li>
+                        <li><a href="/ppp">Правила проезда</a></li>
+                        <li><a href="/blog">О нас</a></li>
+
+
+                    </ul>
+
+</div>
+
+
+
+
+                        <a  sec:authorize="isAuthenticated()">
+
+                            <a  href="/profile">
+                                <th:block th:if="${#request.getRemoteUser() != null}"
+                                          th:text="${#request.getRemoteUser()}"></th:block>
+                            </a>
+                        </a>
+                        <a  sec:authorize="isAuthenticated()">
+                            <a  href="/ticket-cart">
+                                 Личный кабинет
+                            </a>
+                        </a>
+                <a  sec:authorize="!isAuthenticated()">
+                    <a  href="/login"> Войти
+                    </a>
+                </a>
+                        <a sec:authorize="isAuthenticated()">
+                            <a  href="/logout">
+                                Выход
+                            </a>
+                        </a>
+
+                        </div>                           </div>
+
+</div>
+    </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+
+<!--<div class="col-lg-4 col-md-6 banner-right">-->
+<div class="row h-100 justify-content-center align-items-center">
+
+<form th:action="findRoutes" >
+<!--    <div class="tab-content">-->
+        <div class="MuiGrid-container" id="route" role="tabpanel" aria-labelledby="route-tab">
+            <form class="form-wrap">
+
+                <input type="text" class="form-control"  name="fromA" placeholder="Откуда " onfocus="this.placeholder = ''" onblur="this.placeholder = 'fromA '">
+                <input type="text" class="form-control" name="toA" placeholder="Куда " onfocus="this.placeholder = ''" onblur="this.placeholder = 'toA '">
+                <input type="date"  name="dept_date"  pattern ="yyyy-MM-dd"   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Departure time '">
+
+                <button type="submit" value="search">Найти</button>
+            </form>
+        </div>
+
+
+</form>
+</div>
+
+
+<!-- Start blog Area -->
+<section class="recent-blog-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-9">
+                <div class="title text-center">
+                    <h1 class="mb-10">Поездка с нами всегда комфортна и своевременна!</h1>
+                    <p>
+                        Вы собрались в командировку? Или к друзьям на выходные из Витебска в Минск (или наоборот)? А может Вы студент, и постоянно ездите из одного города в другой? Тогда Вам подойдут услуги маршрутки. Ведь именно на маршрутке очень просто, быстро и комфортно можно попасть именно туда, куда Вам надо! Тем более, что стоимость билета незначительно отличается от билета на поезд или автобус. Мы делаем все, чтобы поездка была в удовольствие.
+                    <p> Пассажирские перевозки
+                        Пассажирские перевозки — вот чем занимается наша компания. Мы первыми начали работать по маршруту Минск — Витебск — Минск. Профессиональные водители с большим опытом. Мы заботимся о каждом пассажире, с нами Вы будете довольны.
+                    <p> Гибкое расписание
+                        Мы работаем с самого утра и до позднего вечера. Наши маршрутки отправляются из пунктов назначения (Минск — Витебск — Минск) практически каждый час. Мы работаем для Вас без выходных. Каждый день, в любое время года, мы доставим Вас к месту назначения. Мы принимаем индивидуальные заказы для групп, время и место поездки Вы можете определить сами..</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="active-recent-blog-carusel">
+                <div class="single-recent-blog-post item">
+                    <div class="thumb">
+                        <img class="img-fluid" src="img/b1.jpg" alt="">
+                    </div>
+                    <div class="details">
+
+
+                        <h6 class="date">Ticket</h6>
+                    </div>
+                </div>
+
+                <div class="single-recent-blog-post item">
+                    <div class="thumb">
+                    </div>
+                    <div class="details">
+                        <div class="tags">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="single-recent-blog-post item">
+                    <div class="thumb">
+
+                    </div>
+                    <div class="details">
+                        <div class="tags">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="single-recent-blog-post item">
+                    <div class="thumb">
+                    </div>
+                    <div class="details">
+
+
+                    </div>
+                </div>
+                <div class="single-recent-blog-post item">
+                    <div class="thumb">
+                    </div>
+                    <div class="details">
+                        <div class="tags">
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End recent-blog Area -->

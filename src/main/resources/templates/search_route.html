@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript">
+        function clearSearch() {
+            window.location = "[[@{/}]]";
+        }
+    </script>
+</head>
+<body>
+<form th:action="@{/}">
+    Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+    &nbsp;
+    <input type="submit" value="Search" />
+    &nbsp;
+    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+</form>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Find Routes
+    </title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- start banner Area -->
+<section class="about-banner relative" id="banners">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Settings
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+<br/>
+
+<div class="container text-center" >
+
+    <div class="container text-center">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="/userAccount">Личный кабинет</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Редактировать личные данные</a>
+            </li>
+
+
+        </ul>
+    </div>
+    <br/>
+</div>
+
+<div class="container" xmlns:th="http://www.thymeleaf.org">
+
+    <section>
+        <form method="POST" th:action="@{'/userAccount/{username}' (username=${#request.getRemoteUser()})}">
+            <div class="form-group">
+                <label for="usernameOfUser">Логин</label>
+                <input type="text"
+                       class="form-control"
+                       id="usernameOfUser"
+                       name="usernameOfUser"
+                       th:value="${user?.get().getUsername()}"
+                       required>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="nameOfUser">Имя</label>
+                <input type="text"
+                       class="form-control"
+                       id="nameOfUser"
+                       name="nameOfUser"
+                       th:value="${user?.get().getName()}"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastnameOfUser">Фамилия</label>
+                <input type="text"
+                       class="form-control"
+                       id="lastnameOfUser"
+                       name="lastnameOfUser"
+                       th:value="${user?.get().getLastname()}"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="emailOfUser">Email</label>
+                <input type="text"
+                       class="form-control"
+                       id="emailOfUser"
+                       name="emailOfUser"
+                       th:value="${user?.get().getEmail()}"
+                       required>
+            </div>
+            <button  type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+
+    </section>
+
+    <br/>
+
+    <form th:action="@{'/user/delete/{username}' (username=${#request.getRemoteUser()})}"
+          th:method="POST">
+        <button type="submit" class="btn btn-sm btn-danger "><i
+                class="fa fa-trash">Удалить аккаунт</i>
+        </button>
+    </form>
+    <br/>
+</div>
+
+
+</body>
+</html>
