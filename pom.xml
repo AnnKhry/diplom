@@ -8,11 +8,16 @@
         <version>2.4.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>AirlaneTickets</groupId>
+    <groupId>Tickets</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+<<<<<<< HEAD
     <name>Tickets</name>
     <description> Tickets</description>
+=======
+    <name> Tickets</name>
+    <description>Tickets</description>
+>>>>>>> b71a7596a54bc59f96e533e039cea4dafd3db710
     <properties>
         <java.version>11</java.version>
     </properties>
