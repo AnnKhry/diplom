@@ -16,5 +16,6 @@ public interface RouteService {
 
 
   Optional<RouteInfo> findById(Long id);
-
+  void updateRoute( long id,String fromA, String toA,
+              String dept_date, String dept_time, String arr_time, int seats_left, long price);
     }

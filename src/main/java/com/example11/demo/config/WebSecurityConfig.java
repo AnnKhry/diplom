@@ -1,6 +1,5 @@
 package com.example11.demo.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -10,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.thymeleaf.spring5.SpringTemplateEngine;
 
 @Configuration
 @EnableWebSecurity
@@ -47,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/static/**", "/css/**","/doc/**","/resources/**",
                         "/js/**", "/img/**","/vendor/**","img/**").permitAll()
-                .antMatchers("/home","/","/userAccount","/master-template","/reservation","/dashboardUser","/showCompleteReservation","/completeReservation", "reservationConfirmation", "reservation/completeReservation","/completeReservation","/register","**/resources/**").permitAll()
+                .antMatchers("/home","/","/userAccount","/reservationR","/gomel", "/vitebsk","/brest", "/minsk", "/grodno","/mogilev","/borisov","/baranovichi","/betterroutes","/about","/findRoutes","/rule","/blog","/master-template","/myorders","/reservation","/dashboardUser","/showCompleteReservation","/completeReservation", "reservationConfirmation", "reservation/completeReservation","/completeReservation","/register","**/resources/**").permitAll()
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/*.js").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")

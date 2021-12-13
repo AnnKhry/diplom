@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <head>
     <title>Блог сайта</title>
 
@@ -8,24 +10,49 @@
 </head>
 <body>
 
+<div th:insert="fragments/header :: header"></div>
+
 <div th:insert="blocks/header :: header"></div>
 
 
 <div class="container mt-5">
+<!--    <h1 style="color: red">Акции</h1>-->
+<!--    <p></p>-->
+<!--    <div th:each="el : ${stock}" class="rule">-->
+<!--        &lt;!&ndash;    <div th:each="el : ${posts}" class="alert alert-info mt-2">&ndash;&gt;-->
+<!--        <h3 th:text="${el.title}"/>-->
+<!--        <p th:text="${el.full_text}"/>-->
+<!--        &lt;!&ndash;        <a th:href="'/blog/'+ ${el.id}" class ="btn btn-primary btn-sm ml-10 mb-1">Детальнее</a>&ndash;&gt;-->
 
+<!--        <p></p>-->
+<!--    </div>-->
+<!--<p></p>-->
 
-    <div th:each="el : ${posts}" class="alert alert-info mt-2">
+<!--    <h1 style="color: #003153;">Наши новости</h1>-->
+    <p></p>
+    <div th:each="el : ${posts}" class="rule">
+<!--    <div th:each="el : ${posts}" class="alert alert-info mt-2">-->
         <h3 th:text="${el.title}"/>
         <p th:text="${el.anons}"/>
-        <a th:href="'/blog/'+ ${el.id}" class ="btn btn-primary btn-sm">Детальнее</a>
+<!--        <a th:href="'/blog/'+ ${el.id}" class ="btn btn-primary btn-sm ml-10 mb-1">Детальнее</a>-->
+        <div class ="buttonn">
+        <a th:href="'/blog/'+ ${el.id}" class ="buttonnn">Детальнее</a>
+
+            <div  sec:authorize="hasAuthority('ROLE_ADMIN')">
+
+
+            <a th:href="@{'/deletePost/' + ${el.id} }" >Удалить</a>  </div>
+        </div>
+        <p></p>
 </div>
 </div>
 
+<p>
 
 
 
 
-    <div th:insert="blocks/footer :: footer"></div>
+<div th:insert="fragments/footer :: footer"></div>
 
 
 

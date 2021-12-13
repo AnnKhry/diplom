@@ -29,12 +29,12 @@ public class RouteInfo{
     private  int seats_left;
     private   float seat_price;
     private   String status;
-    float finalPrice;
 
 
 
 
-    public RouteInfo(Long id, String fromA, String toA, String dept_date,String dept_time,String arr_time, int seats_left, float seat_price, String status, float  finalPrice) {
+
+    public RouteInfo(Long id, String fromA, String toA, String dept_date,String dept_time,String arr_time, int seats_left, float seat_price, String status) {
 
     this.id = id;
         this.fromA = fromA;
@@ -45,7 +45,7 @@ public class RouteInfo{
         this.seats_left = seats_left;
         this.seat_price = seat_price;
         this.status = status;
-        finalPrice = 0;
+
     }
 
     public RouteInfo() {

@@ -38,7 +38,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public void update(String username, String usernameOfUser, String nameOfUser, String lastnameOfUser, String emailOfUser) {
+    public void update(String username, String usernameOfUser, String nameOfUser, String lastnameOfUser, String emailOfUser,String phoneOfUser) {
         User user =  this.findByUsername(username).orElseThrow();
 
 
@@ -46,6 +46,7 @@ public class AuthServiceImpl implements AuthService {
         user.setName(nameOfUser);
         user.setLastname(lastnameOfUser);
         user.setEmail(emailOfUser);
+        user.setPhone(phoneOfUser);
 
          this.userRepository.save(user);
 
@@ -54,6 +55,15 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public Optional<User> findByUsername(String username) {
         return this.userRepository.findByUsername(username);
+    }
+//    @Override
+//    public User findByUsernamem(String username) {
+//        return this.userRepository.findByUsernamem(username);
+//    }
+
+    @Override
+    public Optional<User> findById(long id) {
+        return this.userRepository.findById(id);
     }
 
 

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cghfdjxyz byajhvfwbz</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="fragments/header :: header"></header>
+<header th:insert="blocks/header :: header"></header>
+
+    <div align="center">
+        <h1> Edit Product</h1> <br/>
+        <form action="#" th:action="@{/save}" th:object="${route}" method="post">
+            <table cellpadding="10" border="0">
+                <tr>
+                    <td> Номер рейса </td>
+                    <td><input type="number" th:field="*{id}"> </td>
+                </tr>
+                <tr>
+                    <td> Город отправления: </td>
+                    <td><input type="text" th:field="*{fromA}"> </td>
+                </tr>
+                <tr>
+                    <td>  Город прибытия: </td>
+                    <td><input type="text" th:field="*{toA}"> </td>
+                </tr>
+                <tr>
+                    <td> Дата отправления: </td>
+                    <td><input type="text" th:field="*{dept_date}"> </td>
+                </tr>
+                <tr>
+                    <td> Время отправления: </td>
+                    <td><input type="text" th:field="*{dept_time}"> </td>
+                </tr>
+
+
+                <tr>
+                    <td>  Время прибытия: </td>
+                    <td><input type="text" th:field="*{arr_time}"> </td>
+                </tr>
+                <tr>
+                    <td> Свободно мест: </td>
+                    <td><input type="number" th:field="*{seats_left}"> </td>
+                </tr>
+                <tr>
+                    <td> Цена за билет: </td>
+                    <td><input type="number" th:field="*{seat_price}"> </td>
+                </tr>
+                <tr>
+                    <td> Статус: </td>
+                    <td><input type="text" th:field="*{status}"> </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Сохранить</button> </td>
+                </tr>
+
+            </table>
+
+        </form>
+    </div>
+
+
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

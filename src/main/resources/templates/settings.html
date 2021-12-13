@@ -1,28 +1,23 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <head>
-
+    <title>Блог сайта</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Find Routes
-    </title>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+
 </head>
 <body>
+<div th:insert="fragments/header :: header"></div>
 
+<div th:insert="blocks/header :: header"></div>
 <!-- start banner Area -->
 <section class="about-banner relative" id="banners">
-    <div class="overlay overlay-bg"></div>
-    <div class="container">
-        <div class="row d-flex align-items-center justify-content-center">
-            <div class="about-content col-lg-12">
-                <h1 class="text-white">
-                    Settings
-                </h1>
-            </div>
-        </div>
-    </div>
+
+
 </section>
 <!-- End banner Area -->
 
@@ -33,10 +28,13 @@
     <div class="container text-center">
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a class="nav-link" href="/userAccount">Личный кабинет</a>
+                <a class="nav-link active" href="/userAccount">Личный кабинет</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">Редактировать личные данные</a>
+                <a class="nav-link" href="/userAccount/settings">Редактировать данные</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/userAccount/myorders">Мои заказы</a>
             </li>
 
 
@@ -82,6 +80,16 @@
             </div>
 
             <div class="form-group">
+                <label for="phoneOfUser">Номер телефона</label>
+                <input type="text"
+                       class="form-control"
+                       id="phoneOfUser"
+                       name="phoneOfUser"
+                       th:value="${user?.get().getPhone()}"
+                       required>
+            </div>
+
+            <div class="form-group">
                 <label for="emailOfUser">Email</label>
                 <input type="text"
                        class="form-control"
@@ -106,6 +114,6 @@
     <br/>
 </div>
 
-
+<div th:insert="fragments/footer :: footer"></div>
 </body>
 </html>

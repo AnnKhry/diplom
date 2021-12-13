@@ -13,14 +13,15 @@ import java.util.Optional;
 public interface AuthService {
 
     User login(String username, String password);
-
+//    User findByUsernamem(String username);
     Optional<User> findByUsername(String username);
+    Optional<User> findById(long id);
     Optional<User> findByEmail(String email);
 
 
     void delete(String username);
 
     void update(String username, String usernameOfUser, String nameOfUser,
-                String lastnameOfUser, String emailOfUser);
+                String lastnameOfUser, String emailOfUser,String phoneOfUser );
 
 }

@@ -1,20 +1,31 @@
 package com.example11.demo.controller;
 
 
+import com.example11.demo.model.enumerations.Order;
+import com.example11.demo.model.enumerations.Post;
 import com.example11.demo.model.enumerations.RouteInfo;
+import com.example11.demo.service.PInfoService;
+import com.example11.demo.service.impl.OrderServiceImpl;
 import com.example11.demo.service.impl.RouteService;
+import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
+@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 public class AdminController {
 
     @Autowired
@@ -35,6 +46,24 @@ public class AdminController {
     }
 
 
+    @RequestMapping("/new_admin")
+    public String showNewAdmine(Model model) {
+        RouteInfo route = new RouteInfo();
+        model.addAttribute("route", route);
+
+        return "registeradmin";
+    }
+
+
+    @RequestMapping("/adminfunc")
+    public String showAdminPanel(Model model) {
+        RouteInfo route = new RouteInfo();
+        model.addAttribute("route", route);
+
+        return "admin_str";
+    }
+
+
 //    @GetMapping("/admin_edit_route_details")
 //    public String showRouteDetailstoEdit(ModelMap model,@SessionAttribute("admin") Admin admin ) {
 //
@@ -45,7 +74,7 @@ public class AdminController {
 //    }
 
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveroute", method = RequestMethod.POST)
     public String saveRoute(@ModelAttribute("route") RouteInfo route) {
         fservice.save(route);
 
@@ -53,14 +82,43 @@ public class AdminController {
     }
 
 
-}
+    @RequestMapping("/new_post")
+    public String showNewPost(Model model) {
+        Post post = new Post();
+        model.addAttribute("post", post);
+
+        return "admin_news";
+    }
 
 
+
+    @Autowired
+    private OrderServiceImpl serI;
+    @RequestMapping("/listorders")
+    public String allordersadmin(Model model, @Param("keyword") Long keyword) {
+
+        List<Order> orders =serI.listAllOrders(keyword);
+        model.addAttribute("orders",orders);
+        model.addAttribute("keyword", keyword);
+        return "admin_orders";
+    }
+
+
+    @RequestMapping("/deleteO/{orderId}")
+    public String deleteOrder(@PathVariable(name="orderId") long orderId, Model model) {
+        try {
+            serI.deleteO(orderId);
+            return "redirect:/listorders";
+        } catch(ConstraintViolationException | DataIntegrityViolationException exception) {
+            model.addAttribute("hasError", true);
+            model.addAttribute("error", exception.getMessage());
+            return "welcome";
+        }}}
 //    @GetMapping("/admin_add_route")
 //    public String showAddRouteForm() {
 //        return "admin_add_route";
 //    }
-
+//
 
 //    @PostMapping("/admin_add_route")
 //    public String addRouteDetails(ModelMap model, @RequestParam Long id, @RequestParam String fromA,

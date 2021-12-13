@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
+<head>
+    <title>Блог сайта</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+<body>
+<!-- start banner Area -->
+<section class="banner-area relative" xmlns:th="http://www.thymeleaf.org">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <!--        <div class="row fullscreen align-items-center justify-content-between">-->
+        <div class="col-lg-12 col-md-6 banner-left">
+
+            <h6 class="text-white">Пассажирские перевозки на всей территории Республики Беларусь</h6>
+            <h1 class="text-white">MiniBus</h1>
+
+
+            <div class="profile">
+                <div>
+                    <ul class="nav-menu">
+                        <li><a href="/home">Главная страница</a></li>
+                        <li><a href="/betterroutes" >Поиска маршрута</a></li>
+
+                        <li><a href="/reservationR">Правила бронирования</a></li>
+                        <li><a href="/rule">Правила проезда</a></li>
+                        <li><a href="/blog">Новости и акции</a></li>
+                        <li><a href="/about">О нас</a></li>
+
+
+
+                    </ul>
+
+                </div>
+
+
+                <a sec:authorize="isAuthenticated()">
+
+                    <a  href="/userAccount">
+                        <th:block th:if="${#request.getRemoteUser() != null}"
+                                  th:text="${#request.getRemoteUser()}"></th:block>&nbsp;&nbsp;
+                    </a>
+                </a>
+
+                <div  sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <a  href="/adminfunc">
+                        ADMIN PANEL
+                    </a>
+                </div>
+                <!--                        <a  sec:authorize="isAuthenticated()">-->
+                <!--                            <a  href="/userAccount">-->
+                <!--                                 Личный кабинет&nbsp;&nbsp;-->
+                <!--                            </a>-->
+                <!--                        </a>-->
+                <a  sec:authorize="!isAuthenticated()">
+                    <a  href="/login"> Войти&nbsp;&nbsp;
+                    </a>
+                </a>
+                <a sec:authorize="isAuthenticated()">
+                    <a  href="/logout">
+                        Выход&nbsp;&nbsp;
+                    </a>
+                </a>
+
+            </div>                           </div>
+
+    </div>
+
+    </div>
+
+    </div>
+</section>
+<!-- End banner Area -->
+<div class="container">
+
+
+
+    <div class="row d-flex justify-content-center">
+        <h1 class="mb-10">Добавить новость</h1>
+
+<form action="#" th:action="@{/savepost}" th:object="${post}"
+      method="post">
+
+    <table border="0" cellpadding="10">
+        <tr>
+
+
+            <td><label for="anons">Анонс</label></td>
+            <td><input type="text" autocomplete="off" id="anons" th:field="*{anons}"
+                       required="required"></td>
+        </tr>
+
+        <tr>
+            <td><label for="full_text">Полный текст</label></td>
+            <td><input type="text" autocomplete="off" id="full_text" th:field="*{full_text}"
+                       required="required"></td></tr>
+        <tr>
+            <td><label for="title">Заголовок</label></td>
+            <td><input type="text" autocomplete="off" id="title" th:field="*{title}"
+                       required="required"></td>
+        </tr>
+        <tr>
+
+
+            <td><label for="id">№</label></td>
+            <td><input type="text" autocomplete="off" id="id" th:field="*{id}"
+                       required="required"></td>
+        </tr>
+        <td><button type="submit" id="submit">Сохранить</button></td>
+        </tr>
+    </table>
+</form>
+
+
+</div></div>
+</body>
+</html>

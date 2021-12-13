@@ -1,72 +1,165 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <head>
+    <title>Блог сайта</title>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Routes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+
 </head>
 <body>
-<h2>Routes:</h2>
-<!--<div class="container mb-4">-->
-<!--    <div class="row">-->
-<!--        <div class="col-12">-->
-<!--            <div class="table-responsive">-->
+<div th:insert="fragments/header :: header"></div>
+<!-- start banner Area -->
+<section class="banner-area relative" xmlns:th="http://www.thymeleaf.org">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <!--        <div class="row fullscreen align-items-center justify-content-between">-->
+        <div class="col-lg-12 col-md-6 banner-left">
 
-<!--                <table class="table table-striped">-->
-<!--                    <thead>-->
-<!--                    <tr>-->
-<!--                        <th scope="col">From</th>-->
-<!--                        <th scope="col">To</th>-->
-<!--                        <th scope="col">Departure Time</th>-->
-<!--                        <th scope="col">Arrival ime</th>-->
-<!--                        <th scope="col">Price</th>-->
-<!--                        <th scope="col">Free seats</th>-->
-<!--                    </tr>-->
-<!--                    </thead>-->
-<!--                    <tbody>-->
-<!--                    <tr>-->
-<!--                        <td th:text="${route.fromA}"></td>-->
-<!--                        <td th:text="${route.toA}"></td>-->
-<!--                        <td th:text="${route.dept_date"></td>-->
-<!--                        <td th:text="${route.dept_time"></td>-->
-<!--                        <td th:text="${route.arr_time}"></td>-->
-<!--                        <td th:text="${route.getTotal_seats()}"></td>-->
-<!--                    </tr>-->
-<!--                    </tbody>-->
-<!--                </table>-->
+            <h6 class="text-white">Пассажирские перевозки на всей территории Республики Беларусь</h6>
+            <h1 class="text-white">MiniBus</h1>
+
+
+            <div class="profile">
+                <div>
+                    <ul class="nav-menu">
+                        <li><a href="/home">Главная страница</a></li>
+                        <li><a href="/betterroutes" >Поиска маршрута</a></li>
+                        <li><a href="/reservationR">Правила бронирования</a></li>
+
+                        <li><a href="/rule">Правила проезда</a></li>
+                        <li><a href="/blog">Новости и акции</a></li>
+                        <li><a href="/about">О нас</a></li>
+
+
+                    </ul>
+
+                </div>
+
+                <a sec:authorize="isAuthenticated()">
+
+                    <a  href="/userAccount">
+                        <th:block th:if="${#request.getRemoteUser() != null}"
+                                  th:text="${#request.getRemoteUser()}"></th:block>&nbsp;&nbsp;
+                    </a>
+                </a>
+
+                <div  sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <a  href="/adminfunc">
+                        ADMIN PANEL
+                    </a>
+                </div>
+                <!--                        <a  sec:authorize="isAuthenticated()">-->
+                <!--                            <a  href="/userAccount">-->
+                <!--                                 Личный кабинет&nbsp;&nbsp;-->
+                <!--                            </a>-->
+                <!--                        </a>-->
+                <a  sec:authorize="!isAuthenticated()">
+                    <a  href="/login"> Войти&nbsp;&nbsp;
+                    </a>
+                </a>
+                <a sec:authorize="isAuthenticated()">
+                    <a  href="/logout">
+                        Выход&nbsp;&nbsp;
+                    </a>
+                </a>
+
+            </div>                           </div>
+
+    </div>
+
+    </div>
+
+    </div>
+</section>
+
+
+
+
+<!--<section class="about-banner relative" id="banners">-->
+<!--    <div class="overlay overlay-bg"></div>-->
+<!--    <div class="container">-->
+<!--        <div class="row d-flex align-items-center justify-content-center">-->
+<!--            <div class="about-content col-lg-12">-->
+<!--                <h1 class="text-white">-->
+<!--                   Результаты поиска-->
+<!--                </h1>-->
 <!--            </div>-->
 <!--        </div>-->
 <!--    </div>-->
-<!--    <form method="POST" th:action="@{'/reservation'}" th:value="${reservation.getId()}" th:name="idReservation">-->
+<!--</section>-->
+<!-- End banner Area -->
+
+<br/>
+
+<div class="container"  xmlns:th="http://www.thymeleaf.org">
 
 
-<table>
-    <thead>
-    <tr>
-        <th>Город отправления</th>
-        <th>Город назначения</th>
-        <th>Дата отправления</th>
-        <th>Время отправления</th>
-        <th>Время прибытия</th>
-        <th>Стоимость билета (руб.)</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="route:${routes}"  >
-        <td th:text="${route.fromA}"</td>
-        <td th:text="${route.toA}"</td>
-        <td th:text="${route.dept_date}"</td>
-        <td th:text="${route.dept_time}"</td>
-        <td th:text="${route.arr_time}"</td>
-        <td th:text="${route.seat_price}"</td>
-<!--            <td><a href="@{/showCompleteReservation?id={id}(id=${route.id})}">Выбрать</a></td>-->
-<!--        <td><a th:href="@{/showCompleteReservation?routeId={routeId}(routeId=${route.routeId})}">Выбрать</a></td>-->
-<!--        <td><a th:href="@{/showCompleteReservation/{id}(id=${route.id})}">Выбрать</a></td>-->
-        <td><a th:href="@{/showCompleteReservation?id={id}(id=${route.id})}">Выбрать</a></td>
+    <section>
 
-    </tr>
-    </c:forEach>
+        <div class="card">
+            <div class="card-body">
 
-    </tbody>
+                <div class="container text-center">
+
+
+                </div>
+                <h1 class="text-center"> Результаты поиска</h1>
+                <table class="table text-center">
+                        <thead>
+                        <tr>
+                            <th>Город отправления</th>
+                            <th>Город назначения</th>
+                            <th>Дата отправления</th>
+                            <th>Время отправления</th>
+                            <th>Время прибытия</th>
+                            <th>Стоимость билета (руб.)</th>
+                            <th>Мест свободно</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="route:${routes}"  >
+                            <td th:text="${route.fromA}"></td>
+                            <td th:text="${route.toA}"></td>
+                            <td th:text="${route.dept_date}"></td>
+                            <td th:text="${route.dept_time}"></td>
+                            <td th:text="${route.arr_time}"></td>
+                            <td th:text="${route.seat_price}"></td>
+                            <td th:text="${route.seats_left}"></td>
+                            <!--            <td><a href="@{/showCompleteReservation?id={id}(id=${route.id})}">Выбрать</a></td>-->
+                            <!--        <td><a th:href="@{/showCompleteReservation?routeId={routeId}(routeId=${route.routeId})}">Выбрать</a></td>-->
+                            <!--        <td><a th:href="@{/showCompleteReservation/{id}(id=${route.id})}">Выбрать</a></td>-->
+                            <td>  <a sec:authorize="isAuthenticated()"><a th:href="@{/showCompleteReservation?id={id}(id=${route.id})}">Выбрать</a></a></td>
+
+                        </tr>
+                        </c:forEach>
+
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+
+
+    </section>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
 
 <!--    <div class="form-group label-floating">-->
 <!--        <label>Username</label>-->
@@ -74,7 +167,7 @@
 <!--               th:value="${currentStudent.username}"/>-->
 <!--    </div>-->
 
-
+<div th:insert="fragments/footer :: footer"></div>
 </body>
 
 </html>

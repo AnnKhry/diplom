@@ -1,60 +1,33 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-
+    <title>Личный кабинет</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Find Routes
-    </title>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 </head>
 <body>
+<div th:insert="fragments/header :: header"></div>
 
-<!--    <table class="table text-center">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th scope="row">@username</th>-->
-<!--            <td><span th:text="${user.get().getUsername()}"></span></td>-->
-<!--        </tr>-->
-
-<!--        <tr>-->
-<!--            <th scope="row">Email</th>-->
-<!--            <td><span th:text="${user.get().getEmail()}"></span></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <th scope="row">name</th>-->
-<!--            <td><span th:text="${user.get().getName()}"></span></td>-->
-<!--        </tr>-->
-
-<!--        <tr>-->
-<!--            <th scope="row">Email</th>-->
-<!--            <td><span th:text="${user.get().getLastname()}"></span></td>-->
-<!--        </tr>-->
-
-
-<!--        </thead>-->
-<!--    </table>-->
-
-
-<!--</body>-->
-<!--</html>-->
+<div th:insert="blocks/header :: header"></div>
 
 <!-- start banner Area -->
-<section class="about-banner relative" id="banners">
-    <div class="overlay overlay-bg"></div>
+<!--<section class="about-banner relative" id="banners">-->
+<!--&lt;!&ndash;    <div class="overlay overlay-bg"></div>&ndash;&gt;-->
     <div class="container">
         <div class="row d-flex align-items-center justify-content-center">
-            <div class="about-content col-lg-12">
-                <h1 class="text-white">
-                   Кабинет пользователя
-                </h1>
-            </div>
-        </div>
-    </div>
+<!--            <div class="about-content col-lg-12">-->
+<!--                <h1 class="text-white">-->
+<!--                   Кабинет пользователя-->
+<!--                </h1>-->
+<!--            </div>-->
+      </div>
+  </div>
 </section>
 <!-- End banner Area -->
 
+<br/>
+<br/>
 <br/>
 
 <div class="container"  xmlns:th="http://www.thymeleaf.org">
@@ -66,6 +39,9 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/userAccount/settings">Редактировать данные</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/userAccount/myorders">Мои заказы</a>
         </li>
 
 
@@ -81,7 +57,7 @@
 
 
             </div>
-            <h1 class="text-center">Данные пользователя</h1>
+            <h2 class="text-center">Данные пользователя</h2>
     <table class="table text-center">
         <thead>
         <tr>
@@ -99,6 +75,10 @@
             <td><span th:text="${user.get().getLastname()}"></span></td>
         </tr>
         <tr>
+            <th scope="row">Номер телефона</th>
+            <td><span th:text="${user.get().getPhone()}"></span></td>
+        </tr>
+        <tr>
             <th scope="row">Email</th>
             <td><span th:text="${user.get().getEmail()}"></span></td>
         </tr>
@@ -108,9 +88,10 @@
         </div>
     </div>
 
+
 </section>
 
 </div>
-
+<div th:insert="fragments/footer :: footer"></div>
 </body>
 </html>

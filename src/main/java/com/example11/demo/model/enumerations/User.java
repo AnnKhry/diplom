@@ -15,6 +15,8 @@ import java.util.Collections;
 public class User implements UserDetails {
 
 
+
+
     public Long getId() {
         return id;
     }
@@ -34,6 +36,7 @@ public class User implements UserDetails {
     private String name;
 
     private String lastname;
+    private String phone;
     @Column
     private  String email;
 
@@ -79,6 +82,14 @@ public class User implements UserDetails {
         return lastname;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
@@ -100,13 +111,14 @@ public class User implements UserDetails {
     }
 
     public User(String username, String password, String name,
-                String lastname, String email, Role role) {
+                String lastname, String email, String phone,Role role) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.lastname = lastname;
         this.email = email;
         this.role = role;
+        this.phone = phone;
     }
 
 

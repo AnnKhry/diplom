@@ -44,7 +44,7 @@ public class ReservationController {
 	@Autowired
 	RouteService routeService;
 
-MailSender mailSender;
+	MailSender mailSender;
 	private RouteInfo route;
 
 	public ReservationController() {
@@ -56,11 +56,11 @@ MailSender mailSender;
 
 
 	@GetMapping("/showCompleteReservation")
-    public String showCompleteReservation(@RequestParam("id") long id , HttpServletRequest req,
+	public String showCompleteReservation(@RequestParam("id") long id , HttpServletRequest req,
 										  ModelMap modelMap, Model model
 
 	){
-    	LOGGER.info("Inside showCompleteReservation() Route_ID: "+id);
+		LOGGER.info("Inside showCompleteReservation() Route_ID: "+id);
 
 
 		Optional<RouteInfo> route=this.routeService.findById(id);
@@ -123,8 +123,8 @@ MailSender mailSender;
 
 
 //		modelMap.addAttribute("msg","Reservation created successfully and the reservation id is "+order.getId());
-			return "reservationConfirmation";
-		}
-
-
+		return "reservationConfirmation";
 	}
+
+
+}

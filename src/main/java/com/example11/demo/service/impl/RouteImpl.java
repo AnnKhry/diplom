@@ -39,7 +39,22 @@ public class RouteImpl implements RouteService {
     }
 
 
+    @Override
+    public void updateRoute( long id, String fromA, String toA,
+                             String dept_date, String dept_time, String arr_time, int seats_left, long price) {
+        RouteInfo route =  this.findById(id).orElseThrow();
 
+        route.setId(id);
+        route.setFromA(fromA);
+        route.setToA(toA);
+        route.setDept_date(dept_date);
+        route.setDept_time(dept_time);
+        route.setArr_time(arr_time);
+        route.setSeats_left(seats_left);
+        route.setSeat_price(price);
 
+        this.routeRepository.save(route);
+
+    }
 
 }

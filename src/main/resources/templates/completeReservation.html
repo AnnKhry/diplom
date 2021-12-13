@@ -1,107 +1,176 @@
-
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <head>
-
+    <title>Блог сайта</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Find Routes
-    </title>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+
 </head>
 <body>
-<h1>Result</h1>
 
-<form method="post" th:object="${order}" th:action="@{/completeReservation}" >
+<div th:insert="fragments/header :: header"></div>
+<!-- start banner Area -->
+<section class="banner-area relative" xmlns:th="http://www.thymeleaf.org">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <!--        <div class="row fullscreen align-items-center justify-content-between">-->
+        <div class="col-lg-12 col-md-6 banner-left">
 
-<small id="routeDetails" class="form-text text-muted"><strong>Route Details</strong></small>
-<div class="form-group row">
-    <label for="source" class="col-sm-4 col-form-label">From</label>
-    <div class="col-sm-8">
-        <input type="text" class="form-control" id="source" th:value="${route.dept_date}" name="source" readonly>
+            <h6 class="text-white">Пассажирские перевозки на всей территории Республики Беларусь</h6>
+            <h1 class="text-white">MiniBus</h1>
+
+
+            <div class="profile">
+                <div>
+                    <ul class="nav-menu">
+                        <li><a href="/home">Главная страница</a></li>
+                        <li><a href="/betterroutes" >Поиска маршрута</a></li>
+                        <li><a href="/reservationR">Правила бронирования</a></li>
+                        <li><a href="/rule">Правила проезда</a></li>
+                        <li><a href="/blog">Новости и акции</a></li>
+                        <li><a href="/about">О нас</a></li>
+
+
+                    </ul>
+
+                </div>
+
+
+
+                <a sec:authorize="isAuthenticated()">
+
+                    <a  href="/userAccount">
+                        <th:block th:if="${#request.getRemoteUser() != null}"
+                                  th:text="${#request.getRemoteUser()}"></th:block>&nbsp;&nbsp;
+                    </a>
+                </a>
+
+                <div  sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <a  href="/admin/new_route">
+                        ADMIN&nbsp;&nbsp;
+                    </a>
+                </div>
+                <!--                        <a  sec:authorize="isAuthenticated()">-->
+                <!--                            <a  href="/userAccount">-->
+                <!--                                 Личный кабинет&nbsp;&nbsp;-->
+                <!--                            </a>-->
+                <!--                        </a>-->
+                <a  sec:authorize="!isAuthenticated()">
+                    <a  href="/login"> Войти&nbsp;&nbsp;
+                    </a>
+                </a>
+                <a sec:authorize="isAuthenticated()">
+                    <a  href="/logout">
+                        Выход&nbsp;&nbsp;
+                    </a>
+                </a>
+
+            </div>                           </div>
+
     </div>
-</div>
-<div class="form-group row">
-    <label for="destination" class="col-sm-4 col-form-label">To</label>
-    <div class="col-sm-8">
-        <input type="text" class="form-control" id="destination" name="destination" th:value="${route.fromA}" readonly>
-    </div>
-</div>
 
-<!--<div class="form-group row">-->
-<!--    <label for="operatingAirlines" class="col-sm-4 col-form-label">Operating Airlines</label>-->
-<!--    <div class="col-sm-8">-->
-<!--        <input type="text" class="form-control" id="operatingAirlines" th:value="${route.toA}" name="operatingAirlines" readonly>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="form-group row">-->
-<!--    <label for="estimatedDepartureTime" class="col-sm-4 col-form-label">Estimated Departure</label>-->
-<!--    <div class="col-sm-8">-->
-<!--        <input type="text" class="form-control" id="estimatedDepartureTime" th:value="${route.fromA}" name="estimatedDepartureTime" readonly>-->
-
-<!--    </div>-->
-<!--</div>-->
-<div class="form-group row">
-    <label for="destination" class="col-sm-4 col-form-label">Логин</label>
-
-    <div class="col-sm-8">
-        <input type="text" class="form-control" id="username" name="username" th:value="${user.username}" readonly>
     </div>
 
-
-    <label for="destination" class="col-sm-4 col-form-label">Логин</label>
-
-    <div class="col-sm-8">
-        <input type="text" class="form-control" id="userId" name="userId" th:value="${user.id}" readonly>
     </div>
+</section>
+<section class="recent-blog-area section-gap">
+    <div class="container">   <h2 align="center" class="mb-10">Подтверждение бронирования</h2>
+        <div class="row d-flex justify-content-center">
 
-    <label for="destination" class="col-sm-4 col-form-label">Логин</label>
 
-    <div class="col-sm-8">
-        <input type="text" class="form-control" id="routeId" name="routeId" th:value="${route.id}" readonly>
-    </div>
+            <form method="post" th:object="${order}" th:action="@{/completeReservation}" >
 
-    <label for="destination" class="col-sm-4 col-form-label">Логин</label>
+                <small id="routeDetails" class="form-text text-muted"><strong><h3>Детали заказа</h3></strong></small>
+                <div class="form-group row">
+                    <label for="fromA" class="col-sm-4 col-form-label">Город отправления</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="fromA" th:value="${route.fromA}" name="fromA" readonly>
+                    </div>
+                </div>
 
-    <div class="col-sm-8">
-        <input type="text" class="form-control" id="userEmail" name="userEmail" th:value="${user.email}" readonly>
-    </div>
-</div>
-    <div class="form-group row">
-        <label for="destination" class="col-sm-4 col-form-label">Имя</label>
+                <div class="form-group row">
+                    <label for="toA" class="col-sm-4 col-form-label">Город прибытия</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="toA" name="toA" th:value="${route.toA}" readonly>
+                    </div>
+                </div>
 
-        <div class="col-sm-8">
-            <input type="text" class="form-control" id="name" name="name" th:value="${user.name}" readonly>
+                <div class="form-group row">
+                    <label for="dept_date" class="col-sm-4 col-form-label">Дата отправления</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="dept_date" th:value="${route.dept_date}" name="dept_date" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="dept_time" class="col-sm-4 col-form-label">Время отправления</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="dept_time" name="dept_time" th:value="${route.dept_time}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="arr_time" class="col-sm-4 col-form-label">Время прибытия</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="arr_time" name="arr_time" th:value="${route.arr_time}" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="routeId" class="col-sm-4 col-form-label">Номер рейса</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="routeId" th:value="${route.id}" name="routeId" readonly>
+                    </div>
+                </div>
+
+                <small id="UserDetails" class="form-text text-muted"><strong><h3>Данные покупателя</h3></strong></small>
+
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label">Имя</label>
+
+
+
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="name" name="name" th:value="${user.name}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="lastnamem" class="col-sm-4 col-form-label">Фамилия</label>
+
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="lastnamem" name="lastnamem" th:value="${user.lastname}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="emaill" class="col-sm-4 col-form-label">E-mail</label>
+
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="emaill" name="e_mail" th:value="${user.email}" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="userId" class="col-sm-4 col-form-label">Id пользователя</label>
+
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="userId" name="userId" th:value="${user.id}" readonly>
+                    </div>
+                </div>
+
+
+                <input type="number" autocomplete="off" id="pass_enter_seats" name="passEnterSeats"    th:field="*{passEnterSeats}" th:max="${route.seats_left}"  required="required">
+
+
+                <button type="submit" class="btn btn-lg btn-success">Забронировать</button>
+
+
+            </form>
         </div>
-
     </div>
-    <div class="form-group row">
-        <label for="destination" class="col-sm-4 col-form-label">Фамилия</label>
-
-        <div class="col-sm-8">
-            <input type="text" class="form-control" id="lastname" name="lastname" th:value="${user.lastname}" readonly>
-        </div>
-
-    </div>
-    <div class="form-group row">
-        <label for="destination" class="col-sm-4 col-form-label">E-mail</label>
-
-        <div class="col-sm-8">
-            <input type="text" class="form-control" id="email" name="email" th:value="${user.email}" readonly>
-        </div>
-
-    </div>
-
-    <input type="number" autocomplete="off" id="pass_enter_seats" name="passEnterSeats"    th:field="*{passEnterSeats}" th:max="${route.seats_left}"  required="required">
-
-
-    <button type="submit" class="btn btn-lg btn-success">Забронировать</button>
-
-</form>
-
-
-
-
+</section>
+<div th:insert="fragments/footer :: footer"></div>
 </body>
 </html>

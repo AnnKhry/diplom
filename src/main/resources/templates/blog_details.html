@@ -8,15 +8,17 @@
 </head>
 <body>
 
+<header th:insert="fragments/header :: header"></header>
 <header th:insert="blocks/header :: header"></header>
-
 <div class="container mt-5">
 
-<br><br><br>
-
-    <div th:each="el : ${route}" class="alert -info mt-4">
-        <h1 th:text="${el.id}"/>
-        <p th:text="${el.fromA}"/>
-    </div>
+        <div class="rule">
+    <div th:each="el : ${post}" class="alert -info mt-4">
+        <h1 th:text="${el.title}"/>
+        <p th:text="${el.full_text}"/>
+    </div></div>
 </div>
 
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

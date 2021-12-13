@@ -46,10 +46,11 @@ public class RegisterController {
                            @RequestParam String name,
                            @RequestParam String surname,
                            @RequestParam String email,
+                           @RequestParam String phone,
                            @RequestParam Role role,
                            Model model) {
         try {
-            this.userService.register(username, password, repeatedPassword, name, surname,email,role);
+            this.userService.register(username, password, repeatedPassword, name, surname,email,phone,role);
             return "redirect:/login";
         } catch (InvalidArgumentsException | PasswordsDoNotMatchException | EmailAlreadyExistsException | InvalidEmailException | UsernameAlreadyExistsException exception) {
             model.addAttribute("hasError", true);

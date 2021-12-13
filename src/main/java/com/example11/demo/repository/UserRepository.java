@@ -17,6 +17,8 @@ public interface UserRepository extends JpaRepository<User, Object> {
     Optional<User> findByUsernameAndPassword(String username, String password);
 
     Optional<User> findByUsername(String username);
+//    User findByUsernamem(String username);
+public User findUserByUsername(String username);
 
     Optional<User> findByEmail(String email);
 //   String  findByEEmail(String email);
@@ -32,7 +34,7 @@ public interface UserRepository extends JpaRepository<User, Object> {
     List<User> findUsers(@Param("email") String email, @Param("lastname") String lastname,
                                @Param("name") String name);
 
-    Optional<User> findById(Long userId);
+    Optional<User> findById(long userId);
 
 //    Optional<User> findByEmail(String userEmail);
 }

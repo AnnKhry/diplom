@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User register(String username, String password, String repeatPassword, String name, String lastname, String email, Role role) {
+    public User register(String username, String password, String repeatPassword, String name, String lastname, String email,String phone, Role role) {
         if (username==null || username.isEmpty()  || password==null || password.isEmpty())
             throw new InvalidUsernameOrPasswordException();
         if (!password.equals(repeatPassword))
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
             throw new InvalidEmailException("Your email need to be like example@email.com");
         if(this.userRepository.findByEmail(email).isPresent())
             throw new EmailAlreadyExistsException(email);
-        User user = new User(username,passwordEncoder.encode(password),name,lastname,email,role);
+        User user = new User(username,passwordEncoder.encode(password),name,lastname,email,phone,role);
         return userRepository.save(user);
 
     }

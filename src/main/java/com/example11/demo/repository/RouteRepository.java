@@ -19,9 +19,14 @@ public interface RouteRepository extends JpaRepository<RouteInfo,Long>, PagingAn
 
 
 
-	@Query("from RouteInfo WHERE fromA=:fromA and toA=:toA and dept_date=:dept_date")
+	@Query("from RouteInfo WHERE fromA=:fromA and toA=:toA and dept_date=:dept_date and  dept_date>=CURRENT_DATE and dept_time>CURRENT_TIME")
 	List<RouteInfo> findRoutes(@Param("fromA") String fromA, @Param("toA") String toA,
 							   @Param("dept_date") String dept_date);
+
+
+
+
+
 
 	Optional<RouteInfo> findById(Long routeId);
 }

@@ -1,10 +1,10 @@
 /******************************************************************
-Theme Name: Travel 
-Description: 
+Theme Name: Travel
+Description:
 Author: Colorlib
-Author URI: 
+Author URI:
 Version: 1.0
-Created: 
+Created:
 ******************************************************************/
 /*------------------------------------------------------------------
 
@@ -19,7 +19,7 @@ Created:
 	1.3	Flexbox
 	1.4	Reset
 2.  Elements
-3.  Menu Style 
+3.  Menu Style
 4.  Home Page Style
 5.  About Page Style
 6.  Department Page Style
@@ -46,7 +46,7 @@ $black			: #222;
 
 */
 /* =================================== */
-/*  Basic Style 
+/*  Basic Style
 /* =================================== */
 ::-moz-selection {
   /* Code for Firefox */
@@ -91,6 +91,82 @@ $black			: #222;
   font-weight: 300;
 }
 
+
+
+
+
+
+
+/*кнопка вверх*/
+.topNubex {
+  position: fixed;
+  right: 45px;
+  bottom: 45px;
+}
+
+
+/* правила*/
+
+.rule{
+  background-color: #dfe9f5;
+  width: available;
+  height: available;
+}
+/**ссылки */
+
+.jss2048 {
+    color: unset;
+    display: flex;
+    padding: 12px 16px;
+    box-shadow: 0px 2px 4px rgb(100 149 237), 0px 0px 2px rgb(62 95 138);
+    align-items: center;
+    border-radius: 3px;
+    justify-content: space-between;
+    text-decoration: none;
+    background-color: #FFF;
+}
+/**абзац */
+P.cite { /* Абзац с классом cite */
+  color: navy; /* Цвет текста */
+  margin-left: 20px; /* Отступ слева */
+  border-left: 1px solid navy; /* Граница слева от текста */
+  padding-left: 15px;
+  text-align: justify;}
+
+/*кнопка детальнее*/
+.buttonn{
+  /*background-color: #9DB1CC;*/
+  width: 10%;
+  hight: 15%;
+  /*margin-left: 10px;*/
+margin: 5px;
+  color:ghostwhite;
+  padding: 7px;
+  border-color: #b3b7bb;
+  /*border: solid 1px;*/
+}
+
+.buttonnn{
+  background-color: #9DB1CC;
+  width: 10%;
+  hight: 15%;
+  /*margin-left: 10px;*/
+  /*margin: 12px;*/
+  color:ghostwhite;
+  padding: 7px;
+  border-color: #b3b7bb;
+  border: solid 1px;
+}
+
+
+.logincontainer {
+  width: 30%;
+  hight: 20%;
+  horiz-align: center;
+margin-left: 35%;
+
+}
+
 body {
   color: #777777;
   font-family: "Poppins", sans-serif;
@@ -99,7 +175,69 @@ body {
   line-height: 1.625em;
   position: relative;
 }
+/*популярные рейсы*/
+.jss563 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.jss185 {
+  margin-top: 8px;
+}
+/* кнопка стрелка*/
+.buttonstr {
+  margin-top: -8px;
+  margin-left: -20px;
+  /*display: block;*/
 
+  /*background-image: url("/img/str1.jpg");*/
+
+  /*display: inline-block;*/
+  overflow: hidden;
+  background: white;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*line-height: 40px;*/
+  /*text-align: center;*/
+  /*font-size: 14px;*/
+  color: darkgrey;
+  text-decoration: none;
+  font-size: larger;
+  border: none;
+}
+
+
+
+
+.box-1 {
+  width: 20%;
+  height: 50%;
+  margin-right : 1px;
+  margin-top : 150px;
+
+}
+.box-2 {
+  border-width: 1em;
+}
+.profile{
+  vertical-align : top;
+  margin-right : 200px;
+  text-align: right;
+  margin-top: -20px; /* Отступ сверху */
+
+}
+.MuiGrid-container {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  margin-left :810px;
+  margin-top: 20px;
+
+
+
+}
 ol, ul {
   margin: 0;
   padding: 0;
@@ -410,6 +548,7 @@ td, th {
 
 .mb-10 {
   margin-bottom: 10px;
+  color: 	#003153;
 }
 
 .mb-15 {
@@ -633,6 +772,7 @@ td, th {
 
 .text-center {
   text-align: center;
+  color: #82859e;
 }
 
 .text-left {
@@ -2362,7 +2502,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*  Homepage Styles
 /* =================================== */
 .section-gap {
-  padding: 120px 0;
+  padding: 12px 0;
 }
 
 .alert-msg {
@@ -2488,7 +2628,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .banner-area .overlay-bg {
-  background: rgba(4, 9, 30, 0.4);
+  background: rgba(176, 196, 222);
 }
 
 @media (max-width: 767px) {
@@ -2582,7 +2722,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 .banner-right .form-wrap {
   padding: 40px 30px;
   text-align: center;
+
+
+
+
 }
+
+
+
 
 .banner-right .form-wrap .form-control {
   padding: 0.675rem 0.75rem;
@@ -4227,8 +4374,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*  Footer Styles
 /* =================================== */
 .footer-area {
-  background: #04091e;
-  padding-top: 100px;
+  background: #525973;
+  padding-top: 15px;
 }
 
 .footer-area .footer-nav li {
@@ -4311,7 +4458,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .footer-area h6 {
   text-transform: uppercase;
   color: #fff;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   font-size: 16px;
   font-weight: 600;
 }
@@ -4337,18 +4484,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: right;
 }
 
-.footer-social a {
-  width: 20px;
-  width: 40px;
-  display: inline-table;
-  height: 40px;
-  text-align: center;
-  padding-top: 10px;
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-}
+
 
 .footer-social a:hover i {
   color: #1a89da;
@@ -4486,8 +4622,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .footer-bottom {
-  padding-top: 40px;
-  margin-top: 20px;
+  padding-top: 5px;
+  margin-top: 1px;
   border-top: 1px solid #333;
 }
 

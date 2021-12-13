@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Личный кабинет</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div th:insert="blocks/header :: header"></div>
+
+<!-- start banner Area -->
+<!--<section class="about-banner relative" id="banners">-->
+<!--&lt;!&ndash;    <div class="overlay overlay-bg"></div>&ndash;&gt;-->
+<div class="container">
+    <div class="row d-flex align-items-center justify-content-center">
+        <!--            <div class="about-content col-lg-12">-->
+        <!--                <h1 class="text-white">-->
+        <!--                   Кабинет пользователя-->
+        <!--                </h1>-->
+        <!--            </div>-->
+    </div>
+</div>
+</section>
+<!-- End banner Area -->
+
+<br/>
+<br/>
+<br/>
+
+<div class="container"  xmlns:th="http://www.thymeleaf.org">
+
+    <div class="container text-center">
+
+    </div>
+
+    <section>
+        <div class="rule">
+            <h3 class="mb-10">Основные правила бронирования:</h3>
+
+        Забронировать места на маршрутныен такси можно по телефонам: <br>
+        +375 (33) 00-00-00 МТС<br>
+        +375 (29) 00-00-00 А1<br>
+        Ежедневно с 7:00 до 22:00 не ранее чем за 15 дней до поездки.
+            <p>
+        При бронировании по телефону Вам необходимо сообщить оператору следующее:
+        • Направление поездки<br>
+        • Дата выезда<br>
+        • Время отправления<br>
+        • Требуемое количество мест<br>
+        • Номер телефона и название сотового оператора того человека, который отправляется в поездку.
+            <p>
+        При бронировании онлайн :
+        <p>
+        1.Выберите необходимый рейс.
+        <p>2. Проверьте все поля формы бронирования, введите количество необходимых мест и нажмите кнопку « Подтвердить бронирование». Если данные не совпадают, измените их в «Личном кабинете» в разделе «Редактировать данные»
+<p> 3. На Вашу электронную почту будет отправлено сообщение с деталями заказа.
+            <h3 class="mb-10">Отмена бронирования:</h3>
+            <p> Отмена бронирования осуществляется через разговор с диспетчером.</p>
+<p> Отмена, перенос и снятие брони осуществляется не менее чем за 2 часа до отправления!</p>
+        </div>
+    </section>
+
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>
